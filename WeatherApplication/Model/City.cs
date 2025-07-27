@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.Model
 {
-	
+
+	// City area variables
+
 	public class Area
 	{
 		public string ID { get; set; }
 		public string LocalizedName { get; set; }
 	}
+
+	// Declare the city variables
 
 	public class City
 	{

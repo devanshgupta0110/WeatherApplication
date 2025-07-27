@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace WeatherApplication.Model
 {
-	
+
+	// City area variables
 	public class Units
 	{
 		public string Value { get; set; }
@@ -14,11 +15,14 @@ namespace WeatherApplication.Model
 		public int UnitType { get; set; }
 	}
 
+	// Temperature variables for the current conditions of the city
 	public class Temperature
 	{
 		public Units Metric { get; set; }
 		public Units Imperial { get; set; }
 	}
+
+	// Current conditions of the city
 
 	public class CurrentConditions
 	{

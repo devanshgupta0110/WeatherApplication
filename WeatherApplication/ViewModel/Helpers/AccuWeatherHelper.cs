@@ -11,13 +11,17 @@ using WeatherApplication.Model;
 
 namespace WeatherApplication.ViewModel.Helpers
 {
+	/// <summary>
 	public class AccuWeatherHelper
 	{
+		
+
 		public const string BASE_URL = "http://dataservice.accuweather.com/";
 		public const string AUTOCOMPLETE_ENDPOINT = "locations/v1/cities/autocomplete?apikey={0}&q={1}";
 		public const string CURRENT_CONDITIONS_ENDPOINT = "currentconditions/v1/{0}?apikey={1}";
 		public const string API_KEY = "yAq0zAafxRv2bGKN7VZE8L6rMaCUPCHJ";
 
+		/// <summary>
 		public static async Task <List<City>> GetCities (string query)
 		{
 		List<City> cities = new List<City>();
@@ -35,6 +39,7 @@ namespace WeatherApplication.ViewModel.Helpers
 			return cities;
 		}
 
+		/// <summary>
 		public static async Task<CurrentConditions> GetCurrentConditions(string cityKey)
 		{ 
 		CurrentConditions currentConditions = new CurrentConditions();

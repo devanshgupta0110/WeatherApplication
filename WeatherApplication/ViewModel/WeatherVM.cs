@@ -15,6 +15,9 @@ namespace WeatherApplication.ViewModel
 {
 	public class WeatherVM : INotifyPropertyChanged
 	{
+
+		// Query string for searching cities.
+	
 		private string query;
 		public string Query
 		{
@@ -29,10 +32,13 @@ namespace WeatherApplication.ViewModel
 			}
 		}
 
+		// Collection of cities that match the search query.
 		public ObservableCollection<City> Cities { get; set; }
 
+		// Current conditions for the selected city.
 		private CurrentConditions currentConditions;
 
+		// currentConditions property to hold the current weather conditions.
 		public CurrentConditions CurrentConditions
 		{
 			get { return currentConditions; }
@@ -43,8 +49,10 @@ namespace WeatherApplication.ViewModel
 			}
 		}
 
+		// Selected city from the list of cities.
 		private City selectedCity;
 
+		// selectedCity property to hold the currently selected city.
 		public City SelectedCity
 		{
 			get { return selectedCity; }
@@ -59,8 +67,10 @@ namespace WeatherApplication.ViewModel
 			}
 		}
 
+		// Command to search for cities based on the query.
 		public SearchCommand SearchCommand { get; set; }
 
+		// Constructor for the WeatherVM class.
 		public WeatherVM()
 		{
 			if (DesignerProperties.GetIsInDesignMode(new System.Windows.DependencyObject()))
@@ -86,6 +96,7 @@ namespace WeatherApplication.ViewModel
 			Cities = new ObservableCollection<City>();
 		}
 
+		// Method to get the current weather conditions for the selected city.
 		private async void GetCurrentConditions()
 		{
 			if (SelectedCity == null) return;
@@ -94,6 +105,7 @@ namespace WeatherApplication.ViewModel
 			CurrentConditions = await AccuWeatherHelper.GetCurrentConditions(SelectedCity.Key);
 		}
 
+		// Method to make a query to search for cities based on the query string.
 		public async void MakeQuery()
 		{ 
 		   var cities = await AccuWeatherHelper.GetCities(Query);
@@ -106,6 +118,7 @@ namespace WeatherApplication.ViewModel
 			}
 		}
 
+		// INotifyPropertyChanged implementation to notify the view of property changes.
 		public event PropertyChangedEventHandler PropertyChanged;
 		private void OnPropertyChanged(string propertyName)
 		{
